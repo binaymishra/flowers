@@ -12,18 +12,20 @@ import com.flower.components.IdGenerator;
 
 @RestController
 public class FlowerController {
-	
-	@Autowired
-	@Qualifier("counterIdGenerator") 
-	private IdGenerator counterIdGenerator;
-	 
-	 @RequestMapping("/flower")
-	 public List<Flower> flowers(){
-		 List<Flower> flowers = new ArrayList<Flower>();
-		 int id = (int) counterIdGenerator.generateId();
-		 flowers.add(new Flower(id, "Rose"));
-		 flowers.add(new Flower(id, "Lotus"));
-		return flowers;
-	 }
+
+  @Autowired
+  @Qualifier("counterIdGenerator")
+  private IdGenerator counterIdGenerator;
+
+  @RequestMapping("/flower")
+  public List<Flower> flowers(){
+    List<Flower> flowers = new ArrayList<Flower>();
+    int id = 0;
+    id = (int) counterIdGenerator.generateId();
+    flowers.add(new Flower(id, "Rose"));
+    id = (int) counterIdGenerator.generateId();
+    flowers.add(new Flower(id, "Lotus"));
+    return flowers;
+  }
 
 }
